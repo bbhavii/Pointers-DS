@@ -64,7 +64,7 @@ int findAddressOfMax(int* a, int n){
 
     return amax;
 }
-
+//working
 /* ============================================= */
 
 void selectionSort(int * a, int n){
