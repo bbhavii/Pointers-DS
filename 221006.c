@@ -51,7 +51,7 @@ int findIndexOfMax(int * a, int n){
     return imax;
 
 }   
-
+//error
 int findAddressOfMax(int* a, int n){
     int *amax = NULL;
 
