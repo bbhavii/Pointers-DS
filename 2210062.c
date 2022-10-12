@@ -44,14 +44,14 @@ int findIndexOfMax(int * a, int n){
     imax = 0; //assuming a[0] is the max element
     for(int i=1; i<n; i++){
         if(a[i] > a[imax]){
-            imax = 1;
+            imax = i;
         }
     }
 
     return imax;
 
 }   
-//error
+
 int findAddressOfMax(int* a, int n){
     int *amax = NULL;
 
@@ -64,7 +64,6 @@ int findAddressOfMax(int* a, int n){
 
     return amax;
 }
-//working
 /* ============================================= */
 
 void selectionSort(int * a, int n){
@@ -178,4 +177,31 @@ void freeLinkedList(NodeAddress head){
         head=head->next;
         free(prev);
     }
+}
+
+int main(int argc, char **argv){
+
+    int *a;
+    int n = 10;
+    int maxindex;
+    int p, q;
+    NodeAddress list;
+    srand(time(NULL));
+
+    a = generateArray(n);
+    list = linkedListFromArray(a,n);
+    selectionSort(a,n);
+    printArray(a,n);
+
+    p = 5;
+    q = 10;
+    swap(&p, &q);
+    printf("%d\n", p);
+
+    free(a);
+    freeLinkedList(list);
+
+    return(0);
+
+
 }
