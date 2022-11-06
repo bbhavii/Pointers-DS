@@ -53,13 +53,14 @@ void quickSort1(int *a, int start, int stop, int n){
 */
 
 NodeAddress LastNode(NodeAddress head){
-    printf("head %d\n",head->val);
-    NodeAddress temp =head;
+    //printf("head %d\n",head->val);
+    NodeAddress temp=head;
     while(temp!=NULL && temp->next!=NULL){
-        printf("temp loop%d\n",temp->val);
+    ///printf("temp loop one%d\n",temp->val);
         temp=temp->next;
+        //printf("temp loop done%d\n",temp->val);
     }
-    printf("temp %d\n",temp->val);
+    //printf("temp %d\n",temp->val);
     return temp;
 }
 /*void quickSort1(int *a, int start, int stop, int n){
@@ -74,43 +75,59 @@ NodeAddress LastNode(NodeAddress head){
 }
 */
 NodeAddress partition(NodeAddress head,NodeAddress end){
+    //printf("head %d\n",head->val);
     NodeAddress pivot=head;
     NodeAddress temp=head;
-    
-    while(temp && temp!=end){
-        if(temp->val<end->val){
-            pivot=head;
+    NodeAddress start=head;
+    int p = end->val;
+    //printf("pivot %d\n",pivot->val);
+    while(start && start!=end){
+        if(start->val<p){
+            //printf("pivot cond%d\n",pivot->val);
+            pivot=temp;
             
-            int t = head->val;
-            head->val = temp->val;
+            int t = start->val;
+            start->val = temp->val;
             temp->val = t;
- 
+            //printf("temp %d\n",temp->val);
             // Visiting the next node
             temp = temp->next;
+            //printlinkedList(head);
         }
+        start=start->next;
+        //printf("temp no switch %d\n",temp->val);
+        //printlinkedList(head);
         
     }
-    int t = head->val;
-    head->val = end->val;
+    int t = temp->val;
+    temp->val = end->val;
     end->val = t;
+    //printf("pivot outside %d\n",pivot->val);
     return pivot;
     
 }
 
-void quickSort(NodeAddress head, NodeAddress end)
-{
-    if (head == end) {
+void quickSort(NodeAddress head, NodeAddress end){
+    //printf("head %d\n",head->val);
+    
+    if (head->val == end->val) {
+        //printf("head return %d\n",head->val);
         return;
     }
     NodeAddress pivot = partition(head, end);
- 
+    //printf("pivot %d\n",pivot->val);
     if (pivot != NULL && pivot->next != NULL) {
+        //printf("sort from %d,%d\n",pivot->next->val,end->val);
         quickSort(pivot->next, end);
+        //printlinkedList(head);
     }
  
     if (pivot != NULL && head != pivot) {
+        //printf("sort from %d,%d\n",head->val,pivot->next->val);
         quickSort(head, pivot);
+        //printlinkedList(head);
     }
+    
 }
 
 void insertionSort(NodeAddress head){
@@ -171,7 +188,7 @@ NodeAddress findNodeMin(NodeAddress head){
 
 void SelectionSort(NodeAddress head){
     
-    printf("head %d \n", head->val);
+    //printf("head %d \n", head->val);
     NodeAddress min,temp,temp2;
     temp=head;
     
@@ -195,7 +212,7 @@ void SelectionSort(NodeAddress head){
         }
         temp=temp->next;
     }
-    printf("The list is sorted.\n");
+    printf("Selection sort implemented:\n");
 }
 
 
@@ -249,16 +266,24 @@ void printArray(int * a, int n){
 
 int main(){
 
-    int n =7;
+    int n =5;
     int* a;
-    NodeAddress list;
+    NodeAddress list,list2,list3;
     a = generateArray(n);
     printArray(a,n);
     list = generatelinkedList(a,n);
+    list2 = generatelinkedList(a,n);
+    list3 = generatelinkedList(a,n);
     printlinkedList(list);
     NodeAddress end = LastNode(list);
-    printf("end %d", end->val);
+    //printf("end %d", end->val);
+    printf("Quick sort implemented:\n");
     quickSort(list,end);
     printlinkedList(list);
+    SelectionSort(list2);
+    printlinkedList(list2);
+    printf("Insertion sort implemented:\n");
+    insertionSort(list3);
+    printlinkedList(list3);
     return 0;
 }
