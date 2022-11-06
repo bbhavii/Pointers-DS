@@ -1,10 +1,21 @@
 #include <stdio.h>
 
 int main(int agrc, char **argv){
-
+    int a[] = {88,99,4,42,11,35,57,3,49,69,73,20};
+    reverseSort(a);
+    int a[]={99,88,73,69,57,49,42,35,20,11,4,3};
     return 0;
 }
 
+void reverseSort(int a[]){
+
+    int max=0;
+
+    for (int i=0;i<(sizeof(a));i++){
+
+    }
+
+}
 void quicksort(int *a, int start, int stop){
     //making sure the input is clean
     if(!a || start>=stop){
@@ -33,4 +44,20 @@ int partition(int *a, int start, int stop){
     swap(a,start,j);
     return j;
 
+}
+
+void sort(int *a, int n){
+    int p;
+    for (int i=0;i<n;i++){
+
+        p=findMaxPos(a,n-1);
+        swap(a,p,n-1-i);
+    }
+}
+
+void sort1(int *a, int n){
+
+    for(int i=0;i<n;i++){
+        swapLastMax(a,n-1);
+    }
 }
