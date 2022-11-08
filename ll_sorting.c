@@ -223,7 +223,7 @@ NodeAddress generatelinkedList(int* a, int n){
     NodeAddress temp;
 
     if(n>0){
-        head = malloc(sizeof(int));
+        head = malloc(sizeof(struct node));
         head->val = a[0];
         head->next = NULL;
         temp = head ;
