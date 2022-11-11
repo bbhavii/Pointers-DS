@@ -37,7 +37,7 @@ int max(int a, int b){
 
 NodeAddress newNode(int key){
 
-	NodeAddress head = malloc(sizeof(struct TreeNode));
+	NodeAddress head = (NodeAddress)(malloc(sizeof(struct TreeNode)));
 
 	head->val=key;
 	head->left=NULL;
@@ -56,11 +56,10 @@ NodeAddress rightRotate(NodeAddress r){
 	l->left=T2;
 
 	r->height=max(height(r->left),height(r->right))+1;
-	l->height=max(height(l->left),height(l->right))+1;;	
+	l->height=max(height(l->left),height(l->right))+1;
 
 	return l;
 }
-
 NodeAddress leftRotate(NodeAddress l){
 	NodeAddress r=l->right;
 	NodeAddress T2 = l->left;
@@ -68,17 +67,16 @@ NodeAddress leftRotate(NodeAddress l){
 	r->left=l;
 	l->right=T2;
 
-	r->height=max((r->left->height),(r->right->height))+1;
-	l->height=max((l->left->height),(l->right->height))+1;	
+	r->height=max(height(r->left),height(r->right))+1;
+	l->height=max(height(l->left),height(l->right))+1;	
 
 	return r;
 }
-
 int getBalance(NodeAddress head){
 	if(head==NULL){
 		return 0;
 	}
-	return ((head->left->height)-(head->right->height));
+	return ((height(head->left))-(height(head->right)));
 }
 
 NodeAddress insert(NodeAddress head, int key){
@@ -95,7 +93,7 @@ NodeAddress insert(NodeAddress head, int key){
 		return head;
 	}
 
-	head->height=max(head->right->height,head->left->height)+1;
+	head->height=max(height(head->right),height(head->left))+1;
 
 	int balance = getBalance(head);
 
@@ -131,8 +129,10 @@ int main(){
 	head = insert(head,30);
 	head = insert(head,40);
 	head = insert(head,50);
+    //printf("balance %d",getBalance(head));
+	printInOrder(head);
 	head = insert(head,25);
-	printf("Tree is: \n");
+	printf("\nTree is: \n");
 	printInOrder(head);
     return 0;
 }
