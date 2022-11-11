@@ -20,12 +20,23 @@ void heapify(int a[], int n, int h){
         largest=right;
     }
     if(largest != h){
-        swap(&a[right],&a[largest]);
+        swap(&a[h],&a[largest]);
 
         heapify(a,n,largest);
     }
 }
 
+void heapSort(int a[],int n){
+    int head = n/2 - 1;
+    for(int i=head; i>=0;i--){
+        heapify(a,n,i);
+    }
+    for(int i=n-1;i>=0;i--){
+        swap(&a[0],&a[i]);
+        heapify(a,i,0);
+    }
+}
+/*
 void buildHeap(int a[], int n){
 
     int head = (n/2)-1;
@@ -33,7 +44,7 @@ void buildHeap(int a[], int n){
         heapify(a,n,i);
     }
 }
-
+*/
 void printHeap(int a[], int n){
     printf("The heap is: \n");
 
@@ -44,7 +55,7 @@ void printHeap(int a[], int n){
 
 int main(){
     int a[] = {1,3,2,7,5};
-    buildHeap(a,5);
+    heapSort(a,5);
     printHeap(a,5);
     return 0;
 }
