@@ -10,7 +10,7 @@ struct node{
 typedef struct node * NodeAddress;
 
 
-NodeAddress newNode(key){
+NodeAddress newNode(int key){
 
     NodeAddress node = malloc(sizeof(struct node));
 
@@ -52,11 +52,10 @@ NodeAddress search(NodeAddress root, int key){
 }
 
 void printInOrder(NodeAddress root){
-    printf("The tree is: ");
-    if(root){
-        printInOrder(root->left);
-        printf("%d,",root->key);
-        printInOrder(root->right);
+    if(root!=NULL){
+        if(root->left!=NULL) printInOrder(root->left);
+        printf("%d ",root->key);
+        if(root->right!=NULL)printInOrder(root->right);
     }
 }
 
@@ -64,6 +63,7 @@ int main(){
 
     NodeAddress root;
     root = insert(root, 50);
+    root = insert(root, 40);
     printInOrder(root);
     return 0;
 }
