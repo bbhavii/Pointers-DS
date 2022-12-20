@@ -79,6 +79,7 @@ bool AddEdge(GraphAddress g, int from, int to){
     }
     
     g->edge[from][to]=true;
+    return true;
 }
 
 bool RemoveEdge(GraphAddress g, int from, int to){
@@ -91,6 +92,7 @@ bool RemoveEdge(GraphAddress g, int from, int to){
         return false;
     }
     g->edge[from][to] = false;
+    return true;
 }
 
 void PrintGraph(GraphAddress g){
