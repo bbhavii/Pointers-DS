@@ -162,8 +162,7 @@ int main(){
 
 
     
-    int n=5;
-    bool cycle=UndirectedCycle(g,5);
+    bool cycle=UndirectedCycle(g,g->5);
     
     printf("That the graph has a cycle is %s.\n", cycle?"true":"false" );
     return 0;

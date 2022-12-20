@@ -9,12 +9,12 @@
 DFS or Depth First Search is a technique that traverses a graph along all the adges of a vertices first and then moves on to
 other vertices.
 
-For example: If vertice 0 has edges with 1,2 and 3, then BFS stores the vertices in a queue.
+For example: If vertice 0 has edges with 1, which has an edge with 2 and 3, then DFS stores the vertices in a queue.
 
-First we print 0, then we can print any of 1,2 or 3. Let us say we start with 3, then 2 and 1. We would print 3,2,1 and then all
-the nodes that 3 is connected to, after which all the nodes that 2 is connected with and so on.
+First we print 0, then we can print any of 1, and then either 2 or 3. Let us say we start with 3, then we would back track
+until we reach 1, which has an unvisited node, which we then print, 2.
 
-The queue structure is taken from the GitHub.
+This uses a basic stack structure but no stacks codes has been used.
 
 */
 
